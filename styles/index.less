@@ -1,0 +1,308 @@
+@bar-color: #54420e;
+@theme: #03e9f4;
+@reset: #d14c4c;
+@bgc: #022038;
+@rim: #414958;
+@fontColor: #d1cdcd;
+
+html {
+  background-color: #282c34;
+  user-select: none;
+
+  body {
+    width: 100wv;
+    height: 100hv;
+
+    .title-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      width: max-content;
+      height: max-content;
+      padding: 4px;
+      margin: 30px auto;
+      background-color: #000;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 110%;
+        aspect-ratio: 1;
+        background: conic-gradient(transparent,
+          #26b94d,
+          #a8b926,
+          #f62e2e,
+          transparent 50%);
+        animation: rotate 3s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .title {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        padding: 10px;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        background-color: #181818;
+        user-select: none;
+      }
+    }
+
+    .panel {
+      display: flex;
+      position: absolute;
+      z-index: 99;
+      right: 60px;
+      top: 100px;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: max-content;
+      height: max-content;
+      padding: 20px;
+      border: 5px solid @rim;
+      border-radius: 10px;
+      color: @fontColor;
+      box-shadow: 5px 5px 15px -3px rgba(118, 229, 118, 0.3);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(../assets/images/bgImg.png) no-repeat center/cover;
+        pointer-events: none;
+        opacity: .1;
+      }
+
+      .disk-number {
+        margin-bottom: 15px;
+
+        span {
+          vertical-align: middle;
+        }
+
+        .number {
+          height: 30px;
+          width: 50px;
+          padding: 5px;
+          text-align: center;
+          border: 2px solid @rim;
+          border-radius: 5px;
+          color: @fontColor;
+          font-weight: 600;
+          font-size: 15px;
+          line-height: 40px;
+          background-color: @bgc;
+          transition: all .5s;
+
+          &:focus {
+            box-shadow: 0 0 8px 1px rgba(66, 151, 198, 0.5);
+          }
+        }
+      }
+
+      .count {
+        margin-bottom: 15px;
+
+        span {
+          display: inline-block;
+          width: 50px;
+          margin-right: 32px;
+          vertical-align: baseline;
+          text-align: center;
+        }
+      }
+
+      .execute,
+      .reset {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        width: max-content;
+        height: max-content;
+        margin-bottom: 25px;
+        padding: 2px;
+        border-radius: 5px;
+        background-color: #000;
+        cursor: pointer;
+        transition: all 1.5s;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 110%;
+          aspect-ratio: 1;
+          background: conic-gradient(@theme 0deg, transparent 270deg);
+          animation: btn 5s linear infinite;
+        }
+
+        @keyframes btn {
+          from {
+            transform: rotate(0deg);
+          }
+        
+          to {
+            transform: rotate(-360deg);
+          }
+        }
+
+        span {
+          display: inline-block;
+          position: relative;
+          z-index: 2;
+          width: max-content;
+          height: max-content;
+          padding: 3px 15px;
+          border-radius: 3px;
+          text-align: center;
+          line-height: 30px;
+          background-color: #1e1e1e;
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: 2px;
+        }
+      }
+
+      .execute {
+        &:hover {
+          box-shadow: 0 0 40px 5px rgba(3, 233, 244, .6);
+        }
+
+        span {
+          color: @theme;
+        }
+      }
+
+      .reset {
+        display: none;
+        opacity: 0;
+
+        &::before {
+          background: conic-gradient(@reset 0deg, transparent 270deg);
+        }
+
+        &:hover {
+          box-shadow: 0 0 40px 5px @reset;
+        }
+
+        span {
+          color: @reset;
+        }
+      }
+
+      .step {
+        position: relative;
+        z-index: 1;
+        overflow: auto;
+        width: 340px;
+        height: 220px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: @bgc;
+        opacity: .5;
+        box-shadow: 0 0 25px 3px rgba(22, 93, 150, 0.4);
+        font-size: 14px;
+        color: #fff;
+
+        ul li {
+          margin: 5px 0;
+        }
+
+        &::-webkit-scrollbar {
+          width: 6px;
+          height: 100%;
+          background-color: @bgc;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #3d2a7e;
+          border-radius: 3px;
+        }
+      }
+    }
+
+    .hanoi {
+      position: relative;
+      left: 100px;
+      margin: 30px 0;
+      width: 1000px;
+      height: 500px;
+      background-color: #282c34;
+      border: 3px solid transparent;
+      border-radius: 5px;
+
+      .pedestal {
+        position: absolute;
+        bottom: 60px;
+        border-radius: 2px;
+        left: 52px;
+        width: 890px;
+        height: 10px;
+        background-color: @bar-color;
+
+        .pillar {
+          position: absolute;
+          bottom: 0;
+          width: 6px;
+          height: 300px;
+          border-radius: 3px;
+          background-color: @bar-color;
+
+          &:nth-child(1) {
+            left: 152px;
+          }
+
+          &:nth-child(2) {
+            left: 442px;
+          }
+
+          &:nth-child(3) {
+            left: 732px;
+          }
+        }
+
+        .label {
+          position: absolute;
+          top: 10px;
+          left: 55px;
+          width: 100px;
+          height: 30px;
+          color: @fontColor;
+          text-align: center;
+          line-height: 30px;
+
+          &:nth-child(4) {
+            left: 105px;
+          }
+
+          &:nth-child(5) {
+            left: 395px;
+          }
+
+          &:nth-child(6) {
+            left: 685px;
+          }
+        }
+      }
+
+    }
+  }
+}

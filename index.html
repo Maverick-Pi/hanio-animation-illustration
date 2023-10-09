@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/icon/favicon.ico" type="image/x-icon">
+  <title>汉诺塔问题</title>
+  <link rel="stylesheet" href="./styles/common.css">
+  <link rel="stylesheet" href="./styles/index.css">
+  <style></style>
+</head>
+
+<body>
+  <div class="title-box">
+    <span class="title">汉诺塔问题动画图解</span>
+  </div>
+  <div class="panel">
+    <label class="disk-number"><span>盘子个数：</span><input class="number" type="text"></label>
+    <div class="count">所需移动次数：<span>0</span></div>
+    <button class="execute"><span>开始演示</span></button>
+    <button class="reset"><span>重置</span></button>
+    <div class="step">
+      <ul class="step-ul"></ul>
+    </div>
+  </div>
+  <div class="hanoi">
+    <div class="pedestal">
+      <div class="pillar source"></div>
+      <div class="pillar auxiliary"></div>
+      <div class="pillar target"></div>
+      <div class="label">Source</div>
+      <div class="label">Auxiliary</div>
+      <div class="label">Target</div>
+    </div>
+  </div>
+
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
